@@ -1,0 +1,27 @@
+# Run an Express server and a Postgres DB.
+version: '3.8'
+
+services:
+  api-server:
+    build:
+      context: api-server
+    env_file:
+      - "./config/api-server"
+      - "./config/postgres-access"
+    ports:
+      - "80:3000"
+  db:
+    restart: always
+    image: postgres:alpine  # A smaller image.
+    env_file:
+      - "./config/postgres-settings"
+      - "./config/postgres-access"
+    volumes:
+      - type: bind
+        source: "./db/pgdata"
+        target: "/var/lib/postgresql/data"
+      - type: bind
+        source: "./transactions.csv"
+        target: "/var/lib/postgresql/data/transactions.csv"
+    ports:
+      - "5432:5432"

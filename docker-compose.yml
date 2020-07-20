@@ -20,8 +20,8 @@ services:
       - type: bind
         source: "./db/pgdata"
         target: "/var/lib/postgresql/data"
-      - type: bind
-        source: "./transactions.csv"
-        target: "/var/lib/postgresql/data/transactions.csv"
+      # - type: bind
+      #   source: "./transactions.csv"
+      #   target: "/var/lib/postgresql/data/transactions.csv"
     ports:
       - "5432:5432"

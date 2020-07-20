@@ -1,0 +1,71 @@
+# -*- restclient -*-
+
+# Access root heelo-world
+GET http://localhost/
+
+# Check a user.
+GET http://localhost/users/1002
+
+# Create a user.
+
+POST http://localhost/users
+Content-Type: application/json
+Authorization: Bearer has-the-privilege
+
+{
+  "firstName": "Joe",
+  "lastName": "Random",
+  "email": "joe@random.email",
+  "password": "abcdef"
+}
+
+# Create another user.
+
+POST http://localhost/users
+Content-Type: application/json
+Authorization: Bearer has-the-privilege
+
+{
+  "firstName": "Jane",
+  "lastName": "Street",
+  "email": "jane@whatever.org",
+  "password": "pink dots"
+}
+
+# Create yet another user.
+
+POST http://localhost/users
+Content-Type: application/json
+Authorization: Bearer has-the-privilege
+
+{
+  "firstName": "Alice",
+  "lastName": "Bobbins",
+  "email": "alice@comm",
+  "password": "simplistic"
+}
+
+# Update a user
+:basic-auth := (base64-encode-string "alice@comm:simplistic" :no-line-break)
+PATCH http://localhost/users/2004
+Content-Type: application/json
+Authorization: Basic :basic-auth
+
+{
+  "lastName": "Bobbinius"
+}
+
+# See balance
+GET http://localhost/users/1440/balance
+
+# Approved transaction
+GET http://localhost/users/1440/approve?amount=10000
+
+# Rejected transaction
+GET http://localhost/users/1440/approve?amount=36179589
+
+# Balances per merchant.
+GET http://localhost/users/1440/balances-by-merchant
+
+# Transaction
+GET http://localhost/transactions/by-user/1440?limit=20&before=2018-10-28T11:24:40.215Z

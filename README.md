@@ -65,3 +65,12 @@ psql psql -h ::1 -U postgres
 ```
 
 Various settings, including the DB password, are in the <config/> directiry.
+
+
+## Tests
+
+Tests are incomplete. They express the general idea though.
+
+Tests get set up automatically. Just run `make test`.
+
+Note: tests require Python.

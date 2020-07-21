@@ -34,3 +34,19 @@ api-running:
 
 api-rev: build-compiled api-down
 	docker-compose up --build --detach api-server
+
+# Where the virtualenv to run tests lives.
+TEST_ENV = test.env
+# Rename if needed, depending on your py2 / py3 setup.
+VENV = virtualenv3
+PIP = pip3
+PY = python3
+test: $(TEST_ENV)/requirements-installed test/test-api.py
+	test.env/bin/python3 -m pytest test/test-api.py
+
+$(TEST_ENV)/requirements-installed: $(TEST_ENV)/bin/$(PY) test/requirements.txt
+	$(TEST_ENV)/bin/$(PIP) install -r test/requirements.txt
+	@date +"API running %Y-%m-%d %H:%M:%S" > $(TEST_ENV)/requirements-installed
+
+$(TEST_ENV)/bin/$(PY):
+	$(VENV) $(TEST_ENV)

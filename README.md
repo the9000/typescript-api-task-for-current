@@ -58,12 +58,12 @@ The data have been extracted from the transaction log presented, and stored acco
 
 Users' passwords are stored as bcrypt hashes, converted once via a temporary table.
 
-See <db/create-and-conver.sql> for the script.
+See [`db/create-and-convert.sql`](db/create-and-convert.sql) for the script.
 
 ## Running the whole thing
 
 Just `make up` should set the server up and running for you.
-See the <docker-compose.yml> file for detals.
+See the [`docker-compose.yml`](docker-compose.yml) file for detals.
 
 Currently there's no automatic data seeding make target, connect to the DB and paste stuff manually:
 ```

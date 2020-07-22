@@ -382,7 +382,7 @@ app.get('/users/:id/balances-by-merchant', rh(async (req, res) => {
         .from('Transaction')
         .where('userId', req.params.id)
         .groupBy('merchantId')
-        .orderBy('timestamp');
+        .orderBy('merchantId');
     // NOTE: The sum may be very large, and is represented
     // by a string. We do not return it as a number to avoid precision loss.
     // JSON can't handle BigInt :(

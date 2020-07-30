@@ -4,9 +4,7 @@ This is an interview take-home task.
 
 ## Demo
 
-You can access the running API right at `demo.cheryasov.info` (while supplies last).
-For instance, try [`http://demo.cheryasov.info/users/2124`](http://demo.cheryasov.info/users/2124).
-If you sent me the original data, you know the passwords to all  users, too.
+You could access the running API right at `demo.cheryasov.info` while supplies lasted.
 
 ## The API
 
